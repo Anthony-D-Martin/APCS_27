@@ -1,6 +1,6 @@
 /*
- *	Author:  
- *  Date: 
+ *	Author:  Anthony Martin
+ *  Date: 9/3/26
 */
 
 class starter {

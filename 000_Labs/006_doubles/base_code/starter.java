@@ -1,6 +1,6 @@
 /*
- *	Author:  
- *  Date: 
+ *	Author:  Anthony Martin
+ *  Date: 9/2/2026
 */
 
 import java.util.Scanner;
