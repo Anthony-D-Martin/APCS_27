@@ -1,6 +1,6 @@
 /*
- *	Author:  
- *  Date: 
+ *	Author:  Anthony Martin
+ *  Date: 9/21/26
 */
 
 import java.util.Scanner;
@@ -11,10 +11,10 @@ class starter {
 		// the command window when you compile and run this program.
 	
 		Scanner sc=new Scanner(System.in);
-		System.out.println("What is the first integer?");
-		int x=sc.nextInt();
-		System.out.println("What is the second integer?");
-		int y=sc.nextInt();
+		int x=4;
+		int y=3;
+		System.out.println("The first number is "+x);
+		System.out.println("The second number is "+y);
 		boolean same=x==y;
 		boolean diff=x!=y;
 		if(same){
