@@ -1,8 +1,8 @@
 /*
 
- *	Author:  
+ *	Author:  Anthony Martin
 
- *  Date: 
+ *  Date: 10/5/26
 
 */
 
@@ -28,10 +28,10 @@ class starter {
 
 		int printamt=sc.nextInt();
 
-		int printnum;
+		int printnum=0;
 
 		while(true){
-			printnum=printnum+1;
+			
 			if(printnum>=printamt){
 
 				break;
