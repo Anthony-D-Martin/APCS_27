@@ -16,18 +16,18 @@ class starter {
 		System.out.println("3. The slot machine will roll 3 numbers from 1 to 10");
 		while(money>0){
 		System.out.println("Would you like to play slots? (Yes/yes/Y/y)");
-		String play=sc.nxtLine();
+		String play=sc.nextLine();
 		if(play.equalsIgnoreCase("yes")||play.equalsIgnoreCase("y")){
 			System.out.println("You have $"+money+". How much would you like to wager?");
 			int wager=sc.nextInt();
 			while(wager>money){
-				System.out.println("You only have $"+88+"! Please enter a smaller number:");
-				int wager=sc.nextInt();
+				System.out.println("You only have $"+money+"! Please enter a smaller number:");
+				wager=sc.nextInt();
 			}
 			System.out.println("Great! Lets play!!!");
-			int roll1=(int)((Math.random()*10)+1)
-			int roll2=(int)((Math.random()*10)+1)
-			int roll3=(int)((Math.random()*10)+1)
+			int roll1=(int)((Math.random()*10)+1);
+			int roll2=(int)((Math.random()*10)+1);
+			int roll3=(int)((Math.random()*10)+1);
 			System.out.println("Your rolls are:");
 			System.out.println("_______________________");
 			System.out.println(" |"+roll1+"|"+roll2+"|"+roll3+"|");
