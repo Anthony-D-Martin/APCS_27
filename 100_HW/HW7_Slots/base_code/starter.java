@@ -1,10 +1,7 @@
 /*
- *
- 
- BUGGED
- 	Author:
- *  Date:
- * 	Collaborator(s): 
+ *	Author: Anthony Martin
+ *  Date: 10/7/26
+ * 	Collaborator(s): The Hollow Knight
 */ 
 
 import java.util.Scanner;
@@ -43,14 +40,13 @@ class starter {
 					money=money+(wager*2);
 					System.out.println("You now have $"+money+".");
 				}
-				if(roll1==roll2&&roll2==roll3){
+				else if(roll1==roll2&&roll2==roll3){
 					System.out.println("You won! You're wager has now been tripled!");
 					money=money+(wager*3);
 					System.out.println("You now have $"+money+".");
 				}
 				else{
 					System.out.println("Didn't win this time, better luck next time!");
-					money=money-wager;
 					System.out.println("You now have $"+money+".");
 				}
 		
