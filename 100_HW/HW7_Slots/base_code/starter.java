@@ -28,21 +28,21 @@ class starter {
 				}
 				money=money-wager;
 				System.out.println("Great! Lets play!!!");
-				int roll1=(int)((Math.random()*10)+1);
-				int roll2=(int)((Math.random()*10)+1);
-				int roll3=(int)((Math.random()*10)+1);
+				int roll1=(int)((Math.random())+1);
+				int roll2=(int)((Math.random())+1);
+				int roll3=(int)((Math.random())+1);
 				System.out.println("Your rolls are:");
 				System.out.println("_______________________");
 				System.out.println(" |"+roll1+"|"+roll2+"|"+roll3+"|");
 				System.out.println("_______________________");
-				if(roll1==roll2||roll2==roll3||roll1==roll3){
-					System.out.println("You won! You're wager has now been doubled!");
-					money=money+(wager*2);
-					System.out.println("You now have $"+money+".");
-				}
-				else if(roll1==roll2&&roll2==roll3){
+				if(roll1==roll2&&roll2==roll3){
 					System.out.println("You won! You're wager has now been tripled!");
 					money=money+(wager*3);
+					System.out.println("You now have $"+money+".");
+				}
+				else if(roll1==roll2||roll2==roll3||roll1==roll3){
+					System.out.println("You won! You're wager has now been doubled!");
+					money=money+(wager*2);
 					System.out.println("You now have $"+money+".");
 				}
 				else{
