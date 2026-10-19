@@ -14,10 +14,40 @@ class starter {
 
 	public static void main(String args[]) throws InterruptedException {
 		// Write your code here!
-	
-		
-	}
 
+	Scanner sc=new Scanner(System.in);
+	while(true){
+		System.out.println("Do you want to");
+		System.out.println("1. Play random");
+		System.out.println("2. Choose sentance");
+		System.out.println("3. Quit");
+		int choice=sc.nextInt();
+		sc.nextLine();
+		populateArrayList();
+		String sentence="";
+		if(choice==3){
+			return;
+		}
+		else if(choice==2){
+				System.out.println("Which number sentence do you want to type? (found in .txt file)");
+				int sentChoice=sc.nextInt();
+				sc.nextLine();
+				sentence=getSentence(sentChoice);
+		}
+		else if(choice==1){
+				sentence=getSentence();
+		}
+		System.out.println("The sentance is:");
+		System.out.println(sentence);
+	    countdown();
+        startTimer();
+        String typedSent=sc.nextLine();
+        double finalTime=endTimer();
+        int mistakes=compareSentences(sentence, typedSent);
+         System.out.println("Final time: "+finalTime);
+         System.out.println("Mistakes: "+mistakes+" out of "+lettersInSentence(sentence));
+	}
+	}
 	// This method returns the local current time as a String
 	public static String getTime(){
 		LocalTime now = LocalTime.now();
@@ -108,3 +138,4 @@ class starter {
 	}
 
 }
+
