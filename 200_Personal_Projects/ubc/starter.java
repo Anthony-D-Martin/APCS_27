@@ -10,7 +10,8 @@ import java.util.Random;
 
 class starter {
 	public static int deal(){
-		int card=(int)((Math.random())*12)+1;
+		while(money>0){
+			int card=(int)((Math.random())*12)+1;
 		if(card>=10||card>=12){
 			return 10;
 		}
@@ -39,6 +40,7 @@ class starter {
 			}
 		}
 		if(inHand2==1){
+			System.out.println("You were handed a "+inHand1+" and a "+inHand2+".");
 			System.out.println("use ace as 1 or 11?");
 			ace2=sc.nextLine();
 			if(ace2.equals("1")){
@@ -93,14 +95,35 @@ class starter {
 		int dealerHand=inDealerHand1+inDealerHand2;
 		System.out.println("The dealer was dealt a "+inDealerHand1+" and a "+inDealerHand2+" with a total of "+dealerHand+".");
 		int dealerHit=0;
-		while(dealerHand<17){
+		boolean risky;
+		if(((int)(Math.random()*2))==1){
+			risky=true;
+			System.out.println("The dealer is feeling risky today.");
+		}
+		else{
+			risky=false;
+			System.out.println("The dealer is feeling normal today.");
+		}
+		
+		if(risky==true){
+			while(dealerHand<17||dealerHand<hand&&!(hand>21)){
 			System.out.println("The dealer hit");
 			dealerHit=deal();
 			dealerHand=dealerHand+dealerHit;
 			System.out.println("The dealer got a "+dealerHit+" bringing their total to "+dealerHand+".");
 			dealerHit=0;
+			}
 		}
-		if(hand>dealerHand&&hand<22){
+		else{
+			while(dealerHand<17){
+			System.out.println("The dealer hit");
+			dealerHit=deal();
+			dealerHand=dealerHand+dealerHit;
+			System.out.println("The dealer got a "+dealerHit+" bringing their total to "+dealerHand+".");
+			dealerHit=0;
+			}
+		}
+		if(hand>dealerHand&&hand<22||dealerHand>21&&hand<=21){
 			System.out.println("The dealer had a "+dealerHand+" and you had a "+hand+". Congrats!");
 		}
 		else if(hand==dealerHand&&hand<22){
@@ -110,7 +133,7 @@ class starter {
 			System.out.println("The dealer had a "+dealerHand+" and you had a "+hand+". Haha you're broke now");
 		}
 		
-			
+	}	
 	}
 
 }
