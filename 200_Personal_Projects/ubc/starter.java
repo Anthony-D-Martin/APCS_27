@@ -10,7 +10,6 @@ import java.util.Random;
 
 class starter {
 	public static int deal(){
-		while(money>0){
 			int card=(int)((Math.random())*12)+1;
 		if(card>=10||card>=12){
 			return 10;
@@ -19,14 +18,47 @@ class starter {
 			return card;
 		}
 	}
-	public static void main(String args[]) {
+	public static void blackjack(){
 		//blackjack
 		Scanner sc=new Scanner(System.in);
-		String ace1="";
-		String ace2="";
+		int money=1000;
+		int inHand1;
+		int inHand2;
+		int bet;
+		String ace1;
+		String ace2;
+		String HitOrStay;
+		int newHand;
+		int inDealerHand1;
+		int inDealerHand2;
+		int dealerHand;
+		int dealerHit;
+		boolean risky;
+		while (money>0){
+		bet=0;
+		inHand1=0;
+		inHand2=0;
+		ace1="";
+		ace2="";
+		HitOrStay="";
+		newHand=0;
+		inDealerHand1=deal();
+		inDealerHand2=deal();
+		dealerHit=0;
+		risky=false;
+		dealerHand=inDealerHand1+inDealerHand2;
+		System.out.println("You have $"+money+". How much would you like to bet?");
+		bet=sc.nextInt();
+		sc.nextLine();
+		while(bet>money||bet<0){
+		System.out.println("You don't have that much broke boi. Try again");
+		bet=sc.nextInt();
+		sc.nextLine();
+		}
+		money-=bet;
 		System.out.println("Blackjack but dum");
-		int inHand1=deal();
-		int inHand2=deal();
+		inHand1=deal();
+		inHand2=deal();
 		
 		if(inHand1==1){
 			System.out.println("You were handed a "+inHand1+" and a "+inHand2+".");
@@ -52,8 +84,6 @@ class starter {
 		}
 		int hand=inHand1+inHand2;
 		System.out.println("You got handed a "+inHand1+" and a "+inHand2+" adding up to "+hand+". Hit or Stay?");
-		String HitOrStay="";
-		int newHand=0;
 		while(hand<21){
 			HitOrStay=sc.nextLine();
 			if(HitOrStay.equalsIgnoreCase("Hit")||HitOrStay.equalsIgnoreCase("H")){
@@ -90,12 +120,7 @@ class starter {
 			}
 			
 		}
-		int inDealerHand1=deal();
-		int inDealerHand2=deal();
-		int dealerHand=inDealerHand1+inDealerHand2;
-		System.out.println("The dealer was dealt a "+inDealerHand1+" and a "+inDealerHand2+" with a total of "+dealerHand+".");
-		int dealerHit=0;
-		boolean risky;
+		System.out.println("The dealer was dealt a "+inDealerHand1+" and a "+inDealerHand2+" with a total of "+dealerHand+".");		
 		if(((int)(Math.random()*2))==1){
 			risky=true;
 			System.out.println("The dealer is feeling risky today.");
@@ -125,15 +150,35 @@ class starter {
 		}
 		if(hand>dealerHand&&hand<22||dealerHand>21&&hand<=21){
 			System.out.println("The dealer had a "+dealerHand+" and you had a "+hand+". Congrats!");
+			money+=bet*2;
 		}
 		else if(hand==dealerHand&&hand<22){
 			System.out.println("The dealer had a "+dealerHand+" and you had a "+hand+",tying the game. Come back soon!");
+			money+=bet;
 		}
 		else{
 			System.out.println("The dealer had a "+dealerHand+" and you had a "+hand+". Haha you're broke now");
 		}
-		
-	}	
 	}
 
-}
+	}
+	public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		while(true){
+		System.out.println("Which game would you like to play? Or, stop playing");
+		String gameChoice=sc.nextLine();
+		if(gameChoice.equalsIgnoreCase("blackjack")||gameChoice.equalsIgnoreCase("b")){
+			blackjack();
+		}
+		else if(gameChoice.equalsIgnoreCase("end")||gameChoice.equalsIgnoreCase("e")||gameChoice.equalsIgnoreCase("stop")||gameChoice.equalsIgnoreCase("s")){
+			System.out.println("Thanks for playing!");
+			break;
+		}
+		else{
+			System.out.println("That game doesn't exist here. Try again next time");
+		}
+		}
+	}	
+	}
+	
+

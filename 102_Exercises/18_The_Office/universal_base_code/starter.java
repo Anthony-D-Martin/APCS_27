@@ -11,6 +11,7 @@ class starter {
 	public static void main(String args[]) {
 		Employee michael = new Employee();
 		michael.employeeToString();
+		Employee dwight=new Employee("Dwight", "Schrute", 1987);
 		
 	}
 }
