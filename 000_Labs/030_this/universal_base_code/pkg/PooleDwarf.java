@@ -36,12 +36,12 @@ public class PooleDwarf {
 		this.name=nane;
 	}
 	
-	public void setAge(String age){
+	public void setAge(int age){
 		this.age=age;
 	}
 
 	public boolean isSameName(String name){
-		if(this.name==name){
+		if(this.name.equals(name)){
 			return true;
 		}
 		else{

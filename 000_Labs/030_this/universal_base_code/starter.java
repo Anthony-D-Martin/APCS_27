@@ -23,8 +23,34 @@ class starter {
 	}
 
 	public static void main(String args[]) {
-		// Your code goes below here
-		PooleDwarf test = new PooleDwarf();
 		
+		PooleDwarf a=new PooleDwarf(randName(), ((int)(Math.random()*20)+21));
+		PooleDwarf b=new PooleDwarf(randName(), ((int)(Math.random()*20)+21));
+		PooleDwarf c=new PooleDwarf(randName(), ((int)(Math.random()*20)+21));
+		PooleDwarf d=new PooleDwarf(randName(), ((int)(Math.random()*20)+21));
+		PooleDwarf e=new PooleDwarf(randName(), ((int)(Math.random()*20)+21));
+		PooleDwarf f=new PooleDwarf(randName(), ((int)(Math.random()*20)+21));
+		PooleDwarf g=new PooleDwarf(randName(), ((int)(Math.random()*20)+21));
+		int dupe=0;
+		if(a.isSameName(b.getName())){
+			dupe+=1;
+		}
+		if(a.isSameName(c.getName())){
+			dupe+=1;
+		}
+		if(a.isSameName(d.getName())){
+			dupe+=1;
+		}
+		if(a.isSameName(e.getName())){
+			dupe+=1;
+		}
+		if(a.isSameName(f.getName())){
+			dupe+=1;
+		}
+		if(a.isSameName(g.getName())){
+			dupe+=1;
+		}
+		System.out.println("There are "+dupe+" duplicates of "+a.getName());
 	}
-}
+	}
+
