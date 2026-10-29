@@ -1,6 +1,6 @@
 /*
- *	Author:  
- *  Date: 
+ *	Author:  Anthony Martin
+ *  Vegas Casino Simulator 
 */
 
 import pkg.*;
