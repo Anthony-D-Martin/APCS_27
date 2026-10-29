@@ -67,7 +67,7 @@ public class BankAccount {
 		return Balance;
 	}
 	public void checkBalance(){
-		System.out.println(Balance);
+		System.out.println("Account Balance: "+Balance);
 	}
 	public void closeAccount(){
 		Owner= "unknown";
