@@ -67,6 +67,7 @@ class starter {
         int dupeAmt=0;
         int p1WinAmt=0;
         int p2WinAmt=0;
+        int netWinAmt=0;
     while(money>0){
         play="";
         rawHand="";
@@ -81,6 +82,7 @@ class starter {
         dupeAmt=0;
         p1WinAmt=0;
         p2WinAmt=0;
+        netWinAmt=0;
         System.out.println("Would you like to play? (yes/no/done)");
         play=sc.nextLine();
         if(play.equalsIgnoreCase("yes")||play.equalsIgnoreCase("y")){
@@ -153,6 +155,13 @@ class starter {
         if(play.equalsIgnoreCase("no")||play.equalsIgnoreCase("n")){
             System.out.println("Who would you like to bet on? Player 1 or 2?");
             bet1Choice=sc.nextInt();
+            sc.nextLine();
+            while(bet1Choice!=1&&bet1Choice!=2){
+                System.out.println("That player does't exist. Try again.");
+                System.out.println("Who would you like to bet on? Player 1 or 2?");
+                bet1Choice=sc.nextInt();
+                sc.nextLine();
+            }
             System.out.println("How much do you want to bet on Player "+bet1Choice+"? You have $"+money);
             bet1=sc.nextInt();
             sc.nextLine();
@@ -173,8 +182,9 @@ class starter {
                 gameAmt=sc.nextInt();
                 sc.nextLine();
             }
-            money-=bet1;
-            while(gameAmt>0){
+            
+            while(gameAmt>0&&money>0){
+                money-=bet1;
             p1Hand=getObject();
             System.out.println("Player 1 threw a "+p1Hand);
             p2Hand=getObject();
@@ -218,10 +228,32 @@ class starter {
             }      
         }
         gameAmt-=1;
-        System.out.println("Player 1 won "+p1WinAmt+" times");
+
+            }
+            System.out.println("Player 1 won "+p1WinAmt+" times");
         System.out.println("Player 2 won "+p2WinAmt+" times");
         System.out.println("There were "+dupeAmt+" ties");
+        
+        if(bet1Choice==1){
+            netWinAmt=p1WinAmt-p2WinAmt;
+            if(netWinAmt>0){
+                System.out.println("Net gain of of "+netWinAmt+" games resulting in $"+(netWinAmt*bet1));
             }
+            else{
+                System.out.println("Net loss of of "+netWinAmt+" games resulting in $"+(netWinAmt*bet1));
+            }
+        }
+        else{
+            netWinAmt=p2WinAmt-p1WinAmt;
+            if(netWinAmt>0){
+                System.out.println("Net gain of of "+netWinAmt+" games resulting in $"+(netWinAmt*bet1));
+            }
+            else{
+                System.out.println("Net loss of of "+netWinAmt+" games resulting in -$"+(netWinAmt*bet1));
+            }
+        }
+        System.out.println("You now have $"+money);
+        
 
         }
         if(play.equalsIgnoreCase("done")||play.equalsIgnoreCase("d")){
@@ -371,7 +403,7 @@ class starter {
 		else{
 			System.out.println("The dealer had a "+dealerHand+" and you had a "+hand+". Haha you're broke now");
 		}
-		System.out.println("Would you like to play again?");
+		if(money>0){System.out.println("Would you like to play again?");
 		playAgainRaw=sc.nextLine();
 		if(playAgainRaw.equalsIgnoreCase("yes")||playAgainRaw.equalsIgnoreCase("y")){
 			playAgain=true;
@@ -379,6 +411,7 @@ class starter {
 		else{
 			playAgain=false;
 		}
+        }
 	}
 
 	}
@@ -386,7 +419,12 @@ class starter {
 		Scanner sc=new Scanner(System.in);
 		money=1000;
 		while(true){
-		System.out.println("Which game would you like to play? Or, stop playing.");
+            if(money<=0){
+                System.out.println("You have no more money. Goodbye");
+                break;
+            }
+		System.out.println("Welcome to the Casino. Currently, we have Rock Paper Scissors and Blackjack open.");
+        System.out.println("Which game would you like to play? Or, stop playing.");
 		System.out.println("You have $"+money+" to gamble with.");
 		String gameChoice=sc.nextLine();
 		if(gameChoice.equalsIgnoreCase("blackjack")||gameChoice.equalsIgnoreCase("b")){
