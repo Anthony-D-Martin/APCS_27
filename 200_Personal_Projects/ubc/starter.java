@@ -1,6 +1,14 @@
 /*
  *	Author:  Anthony Martin
  *  Vegas Casino Simulator 
+ * -Add more games
+ *      -Roulette?
+ *      -poker? (hard tho)
+ *      -Slolitare? (Seems imposssible honestly)
+ *      -Uno
+ * -Make it harder to get money from rps->no
+ * -Make split in blackjack?
+ * -Maybe secret cheat code for money or easier bj dealer/see rps comp outcome??
 */
 
 import pkg.*;
