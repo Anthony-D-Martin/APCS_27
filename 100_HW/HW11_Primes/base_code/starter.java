@@ -19,7 +19,7 @@ class starter {
 	public static void printPrimes(int num){
 		int loopAmt=0;
 
-		int nextPrintNum=0;
+		int nextPrintNum=2;
 
 		while(loopAmt<num){
 
