@@ -1,11 +1,13 @@
 package pkg;
 public class Movie{
+    // make global vars private unless otherwise stated
     String name;
     double rating;
     int ratingNum;
     int revenue;
     
     public Movie(){
+        //default constructor should be avengers, not 0s and avengers should not be made in starter.java
         name="";
         rating=0.0;
         ratingNum=0;

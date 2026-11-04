@@ -2,11 +2,9 @@
  *	Author:  Anthony Martin
  *  Vegas Casino Simulator 
  * -Add more games
- *      -Roulette?
  *      -poker? (hard tho)
  *      -Slolitare? (Seems imposssible honestly)
  *      -Uno
- * -Make it harder to get money from rps->no
  * -Make split in blackjack?
  * -Maybe secret cheat code for money or easier bj dealer/see rps comp outcome??
 */
@@ -91,9 +89,9 @@ class starter {
         p1WinAmt=0;
         p2WinAmt=0;
         netWinAmt=0;
-        System.out.println("Would you like to play? (yes/no/done)");
+        System.out.println("Would you like to play, or would you like to bet on bots? (me/bots/stop)");
         play=sc.nextLine();
-        if(play.equalsIgnoreCase("yes")||play.equalsIgnoreCase("y")){
+        if(play.equalsIgnoreCase("me")||play.equalsIgnoreCase("m")){
             System.out.println("How much do you want to bet? You have $"+money);
             bet1=sc.nextInt();
             sc.nextLine();
@@ -160,7 +158,7 @@ class starter {
             System.out.println("You still have "+money);
         }
         }
-        if(play.equalsIgnoreCase("no")||play.equalsIgnoreCase("n")){
+        if(play.equalsIgnoreCase("bots")||play.equalsIgnoreCase("b")){
             System.out.println("Who would you like to bet on? Player 1 or 2?");
             bet1Choice=sc.nextInt();
             sc.nextLine();
@@ -264,11 +262,11 @@ class starter {
         
 
         }
-        if(play.equalsIgnoreCase("done")||play.equalsIgnoreCase("d")){
+        if(play.equalsIgnoreCase("stop")||play.equalsIgnoreCase("s")){
             break;
         }
           }
-}
+    }
 	public static void blackjack(){
 		//blackjack
 		Scanner sc=new Scanner(System.in);
@@ -421,8 +419,185 @@ class starter {
 		}
         }
 	}
+    }
+    
+    public static int wheelSpinAm(){
+        int spin=(int)(Math.random()*38)+1;
+        if(spin<=18){
+            // Red
+            return 1;
+        }
+        else if(spin>=18&&spin<=36){
+            // Black
+            return 2;
+        }
+        else{
+            // Green
+            return 3;
+        }
+    }
+    public static int wheelSpinEu(){
+        int spin=(int)(Math.random()*37)+1;
+        if(spin<=18){
+            // Red
+            return 1;
+        }
+        else if(spin>=18&&spin<=36){
+            // Black
+            return 2;
+        }
+        else{
+            // Green
+            return 3;
+        }
+    }
+    public static void rouletteWheel(){
+    Scanner sc=new Scanner(System.in);
+    String rouletteType="";
+    String bet2ColorChoice="";
+    String bet2ColorString="";
+    int bet2=0;
+    int spin1Raw=0;
+    String spin1="";
+    String playAgainRaw2="";
+    boolean playAgain2=true;
+    while(playAgain2==true&&money>0){
+        System.out.println("Would you like to play European Roulette or American Roulette? Or, stop playing");
+        rouletteType=sc.nextLine();
+        if(rouletteType.equalsIgnoreCase("european")||rouletteType.equalsIgnoreCase("european roulette")||rouletteType.equalsIgnoreCase("eu")||rouletteType.equalsIgnoreCase("e")){
+            System.out.println("Which color would you like to bet on? Red, Black or Green.");
+            bet2ColorChoice=sc.nextLine();
+            while(!(bet2ColorChoice.equalsIgnoreCase("R")||bet2ColorChoice.equalsIgnoreCase("Red")||bet2ColorChoice.equalsIgnoreCase("B")||bet2ColorChoice.equalsIgnoreCase("Black")||bet2ColorChoice.equalsIgnoreCase("G")||bet2ColorChoice.equalsIgnoreCase("Green"))){
+                System.out.println("That color does't exist. Try again.");
+                System.out.println("Which color would you like to bet on? Red, Black or Green.");
+                bet2ColorChoice=sc.nextLine();
+            }
+            if(bet2ColorChoice.equalsIgnoreCase("R")||bet2ColorChoice.equalsIgnoreCase("Red")){
+                bet2ColorString="Red";
+            }
+            else if(bet2ColorChoice.equalsIgnoreCase("B")||bet2ColorChoice.equalsIgnoreCase("Black")){
+                bet2ColorString="Black";
+            }
+            else{
+                bet2ColorString="Green";
+            }
+            System.out.println("How much do you want to bet on "+bet2ColorString+"? You have $"+money);
+            bet2=sc.nextInt();
+            sc.nextLine();
+            while(bet2<0||bet2>money){
+                System.out.println("Not enough money. Try again");
+                bet2=0;
+                System.out.println("How much do you want to bet on "+bet2ColorString+"? You have $"+money);
+                bet2=sc.nextInt();
+                sc.nextLine();
+            }
+            money-=bet2;
+            spin1Raw=wheelSpinAm();
+            if(spin1Raw==1){
+                spin1="Red";
+            }
+            else if(spin1Raw==2){
+                spin1="Black";
+            }
+            else{
+                spin1="Green";
+            }
+            System.out.println("The wheel landed on "+spin1);
+            if(bet2ColorString.equals(spin1)&&!(spin1.equals("Green"))){
+                money+=bet2*2;
+                System.out.println("You won! Congrats. You now have $"+money);
+            }
+            else if(bet2ColorString.equals("Green")&&spin1.equals("Green")){
+                money+=bet2*8;
+                System.out.println("You hit the jackpot!!! You now have $"+money+"!");
+            }
+            else{
+                System.out.println("You lost... You now have $"+money);
+            }
+            if(money>0){
+            System.out.println("Would you like to play again?");
+		    playAgainRaw2=sc.nextLine();
+		    if(playAgainRaw2.equalsIgnoreCase("yes")||playAgainRaw2.equalsIgnoreCase("y")){
+			    playAgain2=true;
+		    }
+		    else{
+		    	playAgain2=false;
+		    }
+          }            
 
-	}
+
+        }  
+        else if(rouletteType.equalsIgnoreCase("american")||rouletteType.equalsIgnoreCase("american roulette")||rouletteType.equalsIgnoreCase("a")){
+        System.out.println("Which color would you like to bet on? Red, Black or Green.");
+            bet2ColorChoice=sc.nextLine();
+            while(!(bet2ColorChoice.equalsIgnoreCase("R")||bet2ColorChoice.equalsIgnoreCase("Red")||bet2ColorChoice.equalsIgnoreCase("B")||bet2ColorChoice.equalsIgnoreCase("Black")||bet2ColorChoice.equalsIgnoreCase("G")||bet2ColorChoice.equalsIgnoreCase("Green"))){
+                System.out.println("That player does't exist. Try again.");
+                System.out.println("Which color would you like to bet on? Red, Black or Green.");
+                bet2ColorChoice=sc.nextLine();
+            }
+            if(bet2ColorChoice.equalsIgnoreCase("R")||bet2ColorChoice.equalsIgnoreCase("Red")){
+                bet2ColorString="Red";
+            }
+            else if(bet2ColorChoice.equalsIgnoreCase("B")||bet2ColorChoice.equalsIgnoreCase("Black")){
+                bet2ColorString="Black";
+            }
+            else{
+                bet2ColorString="Green";
+            }
+            System.out.println("How much do you want to bet on "+bet2ColorString+"? You have $"+money);
+            bet2=sc.nextInt();
+            sc.nextLine();
+            while(bet2<0||bet2>money){
+                System.out.println("Not enough money. Try again");
+                bet2=0;
+                System.out.println("How much do you want to bet on "+bet2ColorString+"? You have $"+money);
+                bet2=sc.nextInt();
+                sc.nextLine();
+            }
+            money-=bet2;
+            spin1Raw=wheelSpinAm();
+            if(spin1Raw==1){
+                spin1="Red";
+            }
+            else if(spin1Raw==2){
+                spin1="Black";
+            }
+            else{
+                spin1="Green";
+            }
+            System.out.println("The wheel landed on "+spin1);
+            if(bet2ColorString.equals(spin1)&&!(spin1.equals("Green"))){
+                money+=bet2*2;
+                System.out.println("You won! Congrats. You now have $"+money);
+            }
+            else if(bet2ColorString.equals("Green")&&spin1.equals("Green")){
+                money+=bet2*8;
+                System.out.println("You hit the jackpot!!! You now have $"+money+"!");
+            }
+            else{
+                System.out.println("You lost... You now have $"+money);
+            }
+            if(money>0){
+            System.out.println("Would you like to play again?");
+		    playAgainRaw2=sc.nextLine();
+		    if(playAgainRaw2.equalsIgnoreCase("yes")||playAgainRaw2.equalsIgnoreCase("y")){
+			    playAgain2=true;
+		    }
+		    else{
+		    	playAgain2=false;
+		    }
+          }            
+
+
+        }
+        else if(rouletteType.equalsIgnoreCase("stop")||rouletteType.equalsIgnoreCase("s")){
+            break;
+        }
+        else{
+            System.out.println("Invalid type. Try again");
+        }
+    }
+    }
 	public static void main(String args[]) {
 		Scanner sc=new Scanner(System.in);
 		money=1000;
@@ -431,16 +606,19 @@ class starter {
                 System.out.println("You have no more money. Goodbye");
                 break;
             }
-		System.out.println("Welcome to the Casino. Currently, we have Rock Paper Scissors and Blackjack open.");
+		System.out.println("Welcome to the Casino. Currently, we have Rock Paper Scissors, Roulette and Blackjack open.");
         System.out.println("Which game would you like to play? Or, stop playing.");
 		System.out.println("You have $"+money+" to gamble with.");
 		String gameChoice=sc.nextLine();
 		if(gameChoice.equalsIgnoreCase("blackjack")||gameChoice.equalsIgnoreCase("b")){
 			blackjack();
 		}
-		else if(gameChoice.equalsIgnoreCase("Rock Paper Scissors")||gameChoice.equalsIgnoreCase("r")||gameChoice.equalsIgnoreCase("rps")||gameChoice.equalsIgnoreCase("r p s")){
+		else if(gameChoice.equalsIgnoreCase("Rock Paper Scissors")||gameChoice.equalsIgnoreCase("rps")||gameChoice.equalsIgnoreCase("r p s")){
 			RockPaperScissors();
 		}
+        else if(gameChoice.equalsIgnoreCase("roulette")||gameChoice.equalsIgnoreCase("r")||gameChoice.equalsIgnoreCase("roulette wheel")){
+            rouletteWheel();
+        }
 		else if(gameChoice.equalsIgnoreCase("end")||gameChoice.equalsIgnoreCase("e")||gameChoice.equalsIgnoreCase("stop")||gameChoice.equalsIgnoreCase("s")){
 			System.out.println("Thanks for playing!");
 			break;
