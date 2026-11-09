@@ -7,6 +7,7 @@
  *      -Uno
  * -Make split in blackjack?
  * -Maybe secret cheat code for money or easier bj dealer/see rps comp outcome??
+ * -Maybe pay $$$ to predict next deal/hand/spin using arrays to have preset values for the next few spins/hands/deals
 */
 
 import pkg.*;
@@ -35,6 +36,10 @@ class starter {
         else if(gameChoice.equalsIgnoreCase("roulette")||gameChoice.equalsIgnoreCase("r")||gameChoice.equalsIgnoreCase("roulette wheel")){
             Gamble.rouletteWheel();
         }
+		else if(gameChoice.equals("getmoney")){
+			Gamble.moreCash(sc.nextInt());
+			sc.nextLine();
+		}
 		else if(gameChoice.equalsIgnoreCase("slots")||gameChoice.equalsIgnoreCase("sl")){
 			Gamble.slots();
 		}

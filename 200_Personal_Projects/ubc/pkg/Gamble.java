@@ -10,6 +10,9 @@ import java.util.Random;
 
 public class Gamble {
 	private static int money=1000;
+        public static void moreCash(int a){
+            money+=a;
+        }
 		public static int deal(){
 			int card=(int)((Math.random())*12)+1;
 		if(card>=10||card>=12){
