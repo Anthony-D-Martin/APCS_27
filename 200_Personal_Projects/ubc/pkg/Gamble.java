@@ -13,7 +13,79 @@ public class Gamble {
         public static void moreCash(int a){
             money+=a;
         }
-		public static int deal(){
+        public static int card(){
+            int card=(int)((Math.random())*13)+1;
+            return (card);
+        }
+        public static int suit(){
+            int suit=(int)((Math.random())*3)+1;
+            return (suit);
+        }
+        public static String suitToString(int suitRaw){
+            if(suitRaw==1){
+                return "Spades";
+            }
+            else if(suitRaw==2){
+                return "Hearts";
+            }
+            else if(suitRaw==3){
+                return "Clubs";
+            }
+            else{
+                return "Diamonds";
+            }
+        }
+        public static String suitToStringUno(int suitRaw){
+            if(suitRaw==1){
+                return "Red";
+            }
+            else if(suitRaw){
+                return 
+            }
+        }
+        public static String cardToString(int cardRaw){
+            if(cardRaw==1){
+                return "Ace";
+            }
+            else if(cardRaw==2){
+                return "Two";
+            }
+            else if(cardRaw==3){
+                return "Three";
+            }
+            else if(cardRaw==4){
+                return "Four";
+            }
+            else if(cardRaw==5){
+                return "Five";
+            }
+            else if(cardRaw==6){
+                return "Six";
+            }
+            else if(cardRaw==7){
+                return "Seven";
+            }
+            else if(cardRaw==8){
+                return "Eight";
+            }
+            else if(cardRaw==9){
+                return "Nine";
+            }
+            else if(cardRaw==10){
+                return "Ten";
+            }
+            else if(cardRaw==11){
+                return "Jack";
+            }
+            else if(cardRaw==12){
+                return "Queen";
+            }
+            else if(cardRaw==13){
+                return "King";
+            }
+            return "";
+        }
+		public static int dealBJ(){
 			int card=(int)((Math.random())*12)+1;
 		if(card>=10||card>=12){
 			return 10;
@@ -290,8 +362,8 @@ public class Gamble {
 		ace2="";
 		HitOrStay="";
 		newHand=0;
-		inDealerHand1=deal();
-		inDealerHand2=deal();
+		inDealerHand1=dealBJ();
+		inDealerHand2=dealBJ();
 		dealerHit=0;
 		risky=false;
 		dealerHand=inDealerHand1+inDealerHand2;
@@ -305,8 +377,8 @@ public class Gamble {
 		}
 		money-=bet;
 		System.out.println("Blackjack but dum");
-		inHand1=deal();
-		inHand2=deal();
+		inHand1=dealBJ();
+		inHand2=dealBJ();
 		
 		if(inHand1==1){
 			System.out.println("You were handed a "+inHand1+" and a "+inHand2+".");
@@ -335,7 +407,7 @@ public class Gamble {
 		while(hand<21){
 			HitOrStay=sc.nextLine();
 			if(HitOrStay.equalsIgnoreCase("Hit")||HitOrStay.equalsIgnoreCase("H")){
-				newHand=deal();
+				newHand=dealBJ();
 				if(newHand==1){
 					System.out.println("use ace as 1 or 11?");
 					ace2=sc.nextLine();
@@ -381,7 +453,7 @@ public class Gamble {
 		if(risky==true){
 			while(dealerHand<17||dealerHand<hand&&!(hand>21)){
 			System.out.println("The dealer hit");
-			dealerHit=deal();
+			dealerHit=dealBJ();
 			dealerHand=dealerHand+dealerHit;
 			System.out.println("The dealer got a "+dealerHit+" bringing their total to "+dealerHand+".");
 			dealerHit=0;
@@ -390,7 +462,7 @@ public class Gamble {
 		else{
 			while(dealerHand<17){
 			System.out.println("The dealer hit");
-			dealerHit=deal();
+			dealerHit=dealBJ();
 			dealerHand=dealerHand+dealerHit;
 			System.out.println("The dealer got a "+dealerHit+" bringing their total to "+dealerHand+".");
 			dealerHit=0;

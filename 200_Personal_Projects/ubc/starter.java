@@ -6,8 +6,9 @@
  *      -Slolitare? (Seems imposssible honestly)
  *      -Uno
  * -Make split in blackjack?
- * -Maybe secret cheat code for money or easier bj dealer/see rps comp outcome??
+ * -Maybe secret cheat code for easier bj dealer/see rps comp outcome??
  * -Maybe pay $$$ to predict next deal/hand/spin using arrays to have preset values for the next few spins/hands/deals
+ * BUG: cardtostring requires a return if nothing runs but shouldnt need it bc it has to run from one of those
 */
 
 import pkg.*;
@@ -17,6 +18,18 @@ import java.util.Random;
 
 class starter {	
 	public static void main(String args[]) {
+		int tempCard=0;
+		int tempSuit=0;
+		int abc=100;
+		while(abc>0){
+		tempCard=Gamble.card();
+		tempSuit=Gamble.suit();
+		System.out.println(tempCard+", "+tempSuit);
+		System.out.println(Gamble.cardToString(tempCard)+" of "+Gamble.suitToString(tempSuit));	
+		tempCard=0;
+		tempSuit=0;	
+		abc--;
+		}
 		Scanner sc=new Scanner(System.in);
 		while(true){
             if(Gamble.getMoney()<=0){
@@ -40,10 +53,10 @@ class starter {
 			Gamble.moreCash(sc.nextInt());
 			sc.nextLine();
 		}
-		else if(gameChoice.equalsIgnoreCase("slots")||gameChoice.equalsIgnoreCase("sl")){
+		else if(gameChoice.equalsIgnoreCase("slots")||gameChoice.equalsIgnoreCase("s")){
 			Gamble.slots();
 		}
-		else if(gameChoice.equalsIgnoreCase("end")||gameChoice.equalsIgnoreCase("e")||gameChoice.equalsIgnoreCase("stop")||gameChoice.equalsIgnoreCase("s")){
+		else if(gameChoice.equalsIgnoreCase("end")||gameChoice.equalsIgnoreCase("e")||gameChoice.equalsIgnoreCase("stop")||gameChoice.equalsIgnoreCase("st")){
 			System.out.println("Thanks for playing!");
 			break;
 		}
