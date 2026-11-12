@@ -35,14 +35,14 @@ public class Gamble {
                 return "Diamonds";
             }
         }
-        public static String suitToStringUno(int suitRaw){
-            if(suitRaw==1){
-                return "Red";
-            }
-            else if(suitRaw){
-                return 
-            }
-        }
+        // public static String suitToStringUno(int suitRaw){
+        //     if(suitRaw==1){
+        //         return "Red";
+        //     }
+        //     else if(suitRaw){
+        //         return 
+        //     }
+        // }
         public static String cardToString(int cardRaw){
             if(cardRaw==1){
                 return "Ace";

@@ -18,18 +18,18 @@ import java.util.Random;
 
 class starter {	
 	public static void main(String args[]) {
-		int tempCard=0;
-		int tempSuit=0;
-		int abc=100;
-		while(abc>0){
-		tempCard=Gamble.card();
-		tempSuit=Gamble.suit();
-		System.out.println(tempCard+", "+tempSuit);
-		System.out.println(Gamble.cardToString(tempCard)+" of "+Gamble.suitToString(tempSuit));	
-		tempCard=0;
-		tempSuit=0;	
-		abc--;
-		}
+		// int tempCard=0;
+		// int tempSuit=0;
+		// int abc=100;
+		// while(abc>0){
+		// tempCard=Gamble.card();
+		// tempSuit=Gamble.suit();
+		// System.out.println(tempCard+", "+tempSuit);
+		// System.out.println(Gamble.cardToString(tempCard)+" of "+Gamble.suitToString(tempSuit));	
+		// tempCard=0;
+		// tempSuit=0;	
+		// abc--;
+		// }
 		Scanner sc=new Scanner(System.in);
 		while(true){
             if(Gamble.getMoney()<=0){
@@ -37,6 +37,7 @@ class starter {
                 break;
             }
 		System.out.println("Welcome to the Casino. Currently, we have Rock Paper Scissors, Roulette, Slots and Blackjack open.");
+		System.out.println("Note: Games are crude replicas, never been to a real casino.");
         System.out.println("Which game would you like to play? Or, stop playing.");
 		System.out.println("You have $"+Gamble.getMoney()+" to gamble with.");
 		String gameChoice=sc.nextLine();
