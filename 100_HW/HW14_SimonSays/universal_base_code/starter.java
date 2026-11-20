@@ -13,7 +13,7 @@ class starter {
         System.out.println("Please enter a difficulty level: 1, 2, or 3");
         int diff = sc.nextInt();
         sc.nextLine();
-
+        
         /* 
             Basics of the game:
             - Given a set of words, the player must memorize the colors
@@ -35,6 +35,7 @@ class starter {
         // Feel free to comment out the test code above when you start your assignment
 
         if(diff == 1){
+
             /*
                 Difficulty level 1:
                     The user will receive a series of colors as words (ex. "Red", "Blue", "Green", etc.)

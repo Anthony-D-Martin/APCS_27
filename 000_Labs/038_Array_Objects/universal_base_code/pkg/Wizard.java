@@ -13,7 +13,7 @@ public class Wizard {
 	int attack;
 
 	public Wizard() {
-		name = "Gandolf";
+		name = "Gandalf";
 		health = (int)(Math.random()*10+1);
 		attack = (int)(Math.random()*14+1);
 	}

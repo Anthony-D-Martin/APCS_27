@@ -32,10 +32,11 @@ class starter {
 
 	public static void printArray(String[] arr){
 		int loopAmt=0;
-		while(loopAmt<arr.length){
-			System.out.println(arr[loopAmt]);
+		while(loopAmt<arr.length-1){
+			System.out.print(arr[loopAmt]+", ");
 			loopAmt++;
 		}
+		System.out.println(arr[loopAmt]);
 	}
 
 	public static void leftShift(String [] arr){
